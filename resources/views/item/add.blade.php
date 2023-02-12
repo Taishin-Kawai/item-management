@@ -25,17 +25,29 @@
                     <div class="card-body">
                         <div class="form-group">
                             <label for="name">名前</label>
-                            <input type="text" class="form-control" id="name" name="name" placeholder="名前">
+                            <input type="text" class="form-control" id="name" name="name" value="{{ old('name') }}" placeholder="名前">
                         </div>
 
                         <div class="form-group">
+                            <label for="name">価格</label>
+                            <input type="text" class="form-control" id="price" name="price" value="{{ old('price') }}" placeholder="100円〜1000000円">
+                        </div>
+
+                        <!-- TODO:連想配列 -->
+                        <div class="form-group">
+                            <label for="name">状態</label>
+                            <input type="text" class="form-control" id="status" name="status" value="{{ old('status') }}">
+                        </div>
+
+                        <!-- TODO:連想配列 -->
+                        <div class="form-group">
                             <label for="type">種別</label>
-                            <input type="number" class="form-control" id="type" name="type" placeholder="1, 2, 3, ...">
+                            <input type="number" class="form-control" id="type" name="type" value="{{ old('type') }}">
                         </div>
 
                         <div class="form-group">
                             <label for="detail">詳細</label>
-                            <input type="text" class="form-control" id="detail" name="detail" placeholder="詳細説明">
+                            <input type="text" class="form-control" id="detail" name="detail" value="{{ old('detail') }}" placeholder="詳細説明">
                         </div>
                     </div>
 

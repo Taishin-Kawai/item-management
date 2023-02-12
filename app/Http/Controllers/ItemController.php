@@ -42,12 +42,18 @@ class ItemController extends Controller
             // バリデーション
             $this->validate($request, [
                 'name' => 'required|max:100',
+                'price' => 'integer',
+                'status' => 'required|max:100',
+                'type' => 'required|max:100',
+                'detail' => 'max:100'
             ]);
 
             // 商品登録
             Item::create([
                 'user_id' => Auth::user()->id,
                 'name' => $request->name,
+                'price' => $request->price,
+                'status' => $request->status,          
                 'type' => $request->type,
                 'detail' => $request->detail,
             ]);

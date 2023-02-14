@@ -3,14 +3,11 @@
 @section('title', 'Dashboard')
 
 @section('content_header')
-
-@if (Auth::check())
-  <h1>ようこそ！<br>{{ Auth::user()->name }}さん</h1>
-@endif
+    <h1>Dashboard</h1>
 @stop
 
 @section('content')
-    <p>最終ログイン日<br>{{ Auth::user()->last_logout_at }}</p>
+    <p>Welcome to this beautiful admin panel.</p>
 @stop
 
 @section('css')

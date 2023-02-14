@@ -3,8 +3,8 @@
 namespace App\Http\Controllers\Auth;
 
 use App\Http\Controllers\Controller;
+use App\Providers\RouteServiceProvider;
 use Illuminate\Foundation\Auth\AuthenticatesUsers;
-use Illuminate\Http\Request;
 
 class LoginController extends Controller
 {
@@ -19,14 +19,14 @@ class LoginController extends Controller
     |
     */
 
-    use AuthenticatesUsers { logout as originalLogout; }
+    use AuthenticatesUsers;
 
     /**
      * Where to redirect users after login.
      *
      * @var string
      */
-    protected $redirectTo = '/home';
+    protected $redirectTo = RouteServiceProvider::HOME;
 
     /**
      * Create a new controller instance.
@@ -37,20 +37,4 @@ class LoginController extends Controller
     {
         $this->middleware('guest')->except('logout');
     }
-
-    protected function authenticated(Request $request, $user)
-    {
-        $user->last_login_at = now();
-        $user->save();
-    }
-
-    public function logout(Request $request)
-    {
-        $user = $request->user();
-        $user->last_logout_at = now();
-        $user->save();
-
-        return $this->originalLogout($request);
-    }
-
 }

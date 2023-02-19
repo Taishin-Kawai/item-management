@@ -21,15 +21,13 @@ class ItemController extends Controller
     /**
      * 商品一覧
      */
-    public function index()
+    public function index(Request $request)
     {
         // 商品一覧取得
-        $items = Item
-            ::where('items.status', 'active')
-            ->select()
-            ->get();
+        $items = Item::select('id', 'user_id','name' ,'price', 'status', 'type', 'detail')
+        ->get();
 
-        return view('item.index', compact('items'));
+        return view('item.index', compact('items',));
     }
 
     /**
@@ -42,12 +40,18 @@ class ItemController extends Controller
             // バリデーション
             $this->validate($request, [
                 'name' => 'required|max:100',
+                'price' => 'required|max:100000',
+                'status' => 'required',
+                'type' => 'required',
+                'detail' => 'required|max:100',
             ]);
 
             // 商品登録
             Item::create([
                 'user_id' => Auth::user()->id,
                 'name' => $request->name,
+                'price' => $request->price,
+                'status' => $request->status,
                 'type' => $request->type,
                 'detail' => $request->detail,
             ]);

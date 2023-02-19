@@ -25,17 +25,32 @@
                     <div class="card-body">
                         <div class="form-group">
                             <label for="name">名前</label>
-                            <input type="text" class="form-control" id="name" name="name" placeholder="名前">
+                            <input type="text" class="form-control" id="name" name="name" value="{{ old('name') }}" placeholder="商品名">
                         </div>
 
                         <div class="form-group">
-                            <label for="type">種別</label>
-                            <input type="number" class="form-control" id="type" name="type" placeholder="1, 2, 3, ...">
+                            <label for="name">価格</label>
+                            <input type="text" class="form-control" id="price" name="price" value="{{ old('price') }}" placeholder="100円〜100000円">
+                        </div>
+
+                        <div class="form-group">
+                            <label for="status" id="status" name="status">状態</label><br>
+                            <select name="status">
+                                <option value="">選択してください</option>
+                                <option value="新品" {{ old('status') == "新品" ? 'selected' : ''}}>新品</option>
+                                <option value="中古品" {{ old('status') == "中古品" ? 'selected' : ''}}>中古品</option>
+                                <option value="ジャンク品" {{ old('status') == "ジャンク品" ? 'selected' : ''}}>ジャンク品</option>
+                            </select>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="type">個数</label>
+                            <input type="number" class="form-control" id="type" name="type" value="{{ old('type') }}" placeholder="1, 2, 3, ...">
                         </div>
 
                         <div class="form-group">
                             <label for="detail">詳細</label>
-                            <input type="text" class="form-control" id="detail" name="detail" placeholder="詳細説明">
+                            <input type="text" class="form-control" id="detail" name="detail" value="{{ old('detail') }}" placeholder="詳細説明">
                         </div>
                     </div>
 

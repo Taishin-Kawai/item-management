@@ -27,14 +27,14 @@ Route::get('/', [App\Http\Controllers\HomeController::class, 'index'])->name('ho
 
 
 Route::prefix('items')
-->middleware(['auth'])
-->name('item.')
-->group(function () {
+  ->middleware(['auth'])
+  ->name('item.')
+  ->group(function () {
     Route::get('/', [App\Http\Controllers\ItemController::class, 'index'])->name('index');
     Route::get('/add', [App\Http\Controllers\ItemController::class, 'add'])->name('add');
     Route::post('/add', [App\Http\Controllers\ItemController::class, 'add'])->name('add');
     Route::get('/{id}', [App\Http\Controllers\ItemController::class, 'show'])->name('show');
-
-    
-});
-
+    Route::get('/{id}/edit', [App\Http\Controllers\ItemController::class, 'edit'])->name('edit');
+    Route::post('/{id}', [App\Http\Controllers\ItemController::class, 'update'])->name('update');
+    Route::post('/{id}/destroy', [App\Http\Controllers\ItemController::class, 'destroy'])->name('destroy');
+  });

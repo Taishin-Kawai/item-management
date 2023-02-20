@@ -2,6 +2,9 @@
 
 use Illuminate\Support\Facades\Route;
 use Illuminate\Support\Facades\Auth;
+use App\Http\Controllers\HomeController;
+use App\Http\Controllers\ItemController;
+
 
 /*
 |--------------------------------------------------------------------------
@@ -23,9 +26,15 @@ Auth::routes();
 Route::get('/', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 
 
-Route::prefix('items')->group(function () {
-    Route::get('/', [App\Http\Controllers\ItemController::class, 'index']);
-    Route::get('/add', [App\Http\Controllers\ItemController::class, 'add']);
-    Route::post('/add', [App\Http\Controllers\ItemController::class, 'add']);
+Route::prefix('items')
+->middleware(['auth'])
+->name('item.')
+->group(function () {
+    Route::get('/', [App\Http\Controllers\ItemController::class, 'index'])->name('index');
+    Route::get('/add', [App\Http\Controllers\ItemController::class, 'add'])->name('add');
+    Route::post('/add', [App\Http\Controllers\ItemController::class, 'add'])->name('add');
+    Route::get('/{id}', [App\Http\Controllers\ItemController::class, 'show'])->name('show');
+
+    
 });
 

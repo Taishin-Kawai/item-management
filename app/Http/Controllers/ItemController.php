@@ -61,4 +61,12 @@ class ItemController extends Controller
 
         return view('item.add');
     }
+
+      //id取得、表示
+  public function show($id)
+  {
+    // dd($id);
+    $item = Item::find($id);
+    return view('item.show', compact('item'));
+  }
 }

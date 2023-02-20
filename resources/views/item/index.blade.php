@@ -15,7 +15,7 @@
                     <div class="card-tools">
                         <div class="input-group input-group-sm">
                             <div class="input-group-append">
-                                <a href="{{ url('items/add') }}" class="btn btn-default">商品登録</a>
+                                <a href="{{ route('item.add') }}" class="btn btn-default">商品登録</a>
                             </div>
                         </div>
                     </div>
@@ -29,7 +29,8 @@
                                 <th>価格</th>
                                 <th>状態</th>
                                 <th>個数</th>
-                                <th>説明</th>
+                                <th></th>
+
                             </tr>
                         </thead>
                         <tbody>
@@ -37,10 +38,10 @@
                                 <tr>
                                     <td>{{ $item->id }}</td>
                                     <td>{{ $item->name }}</td>
-                                    <td>{{ $item->price }}</td>
+                                    <td>{{ $item->price }} 円</td>
                                     <td>{{ $item->status }}</td>
                                     <td>{{ $item->type }}</td>
-                                    <td>{{ $item->detail }}</td>
+                                    <td><a href="{{ route('item.show', ['id' => $item->id ] ) }}" class="btn btn-default">商品詳細</a></td>
                                 </tr>
                             @endforeach
                         </tbody>

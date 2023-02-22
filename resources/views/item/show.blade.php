@@ -22,6 +22,12 @@
     <div class="card card-primary">
 
       <div class="card-body">
+
+      <div class="form-group">
+          <label for="name">登録日</label>
+          <div class="form-control">{{ $item['created_at']->format('Y/m/d') }}</div>
+        </div>
+
         <div class="form-group">
           <label for="name">名 前</label>
           <div class="form-control">{{ $item->name }}</div>

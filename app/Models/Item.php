@@ -3,9 +3,11 @@
 namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Factories\HasFactory;
 
 class Item extends Model
 {
+    use HasFactory;
     /**
      * The attributes that are mass assignable.
      *
@@ -13,13 +15,17 @@ class Item extends Model
      */
     protected $fillable = [
         'id',
-        'user_id',
         'name',
         'price',
         'status',
         'type',
         'detail',
     ];
+
+    public function user()
+    {
+        return $this->belongsTo(User::class);
+    }
 
     /**
      * The attributes that should be hidden for serialization.

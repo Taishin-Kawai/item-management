@@ -24,9 +24,9 @@ class ItemController extends Controller
   public function index(Request $request)
   {
     // 商品一覧取得
-    $items = Item::select('id', 'user_id', 'name', 'price', 'status', 'type', 'detail')
-      ->get();
-    return view('item/index', compact('items'));
+    // $items = Item::select('id', 'user_id', 'name', 'price', 'status', 'type', 'detail','created_at','updated_at')->get();
+    $items = $request->user()->item()->get();
+    return view('item/index',['items' => $items], compact('items'));
   }
 
   /**
@@ -46,8 +46,15 @@ class ItemController extends Controller
       ]);
 
       // 商品登録
-      Item::create([
-        'user_id' => Auth::user()->id,
+      // Item::create([
+      //   'user_id' => Auth::user()->id,
+      //   'name' => $request->name,
+      //   'price' => $request->price,
+      //   'status' => $request->status,
+      //   'type' => $request->type,
+      //   'detail' => $request->detail,
+      // ]);
+      $request->user()->item()->create([
         'name' => $request->name,
         'price' => $request->price,
         'status' => $request->status,
@@ -93,8 +100,8 @@ class ItemController extends Controller
   public function destroy(Request $request, $id)
   {
     // dd($id);
-    $item = Item::find($id);
-    $item->delete();
+    $this->authorize('destroy', $id);
+    $id->delete();
     return redirect('/items');
   }
 }

@@ -24,7 +24,6 @@ class HomeController extends Controller
      */
     public function index()
     {
-        // 商品一覧取得
         $user = Auth::user();
         return view('home', compact('user'));
     }

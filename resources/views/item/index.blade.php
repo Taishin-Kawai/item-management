@@ -25,6 +25,7 @@
           <thead>
             <tr>
               <th>I D</th>
+              <th>最終更新日</th>
               <th>名 前</th>
               <th>価 格</th>
               <th>状 態</th>
@@ -37,6 +38,7 @@
             @foreach ($items as $item)
             <tr>
               <td>{{ $item->id }}</td>
+              <td>{{ $item['updated_at']->format('Y/m/d') }}</td>
               <td>{{ $item->name }}</td>
               <td>{{ $item->price }} 円</td>
               <td>{{ $item->status }}</td>

@@ -23,7 +23,12 @@ use App\Http\Controllers\ItemController;
 
 Auth::routes();
 
+
 Route::get('/', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+Route::get('/users', [App\Http\Controllers\HomeController::class, 'show'])->name('show');
+Route::get('/{id}/edit', [App\Http\Controllers\HomeController::class, 'edit'])->name('user.edit');
+Route::post('/{id}', [App\Http\Controllers\HomeController::class, 'update'])->name('user.update');
+Route::post('/{id}/destroy', [App\Http\Controllers\HomeController::class, 'destroy'])->name('user.destroy');
 
 
 Route::prefix('items')

@@ -27,4 +27,37 @@ class HomeController extends Controller
         $user = Auth::user();
         return view('home', compact('user'));
     }
+
+    public function show()
+    {
+        $user = Auth::user();
+        return view('user/show', compact('user'));
+    }
+
+      //編集画面
+  public function edit()
+  {
+    // dd($id);
+    $user = Auth::user();
+    return view('user/edit', compact('user'));
+  }
+    //更新
+    public function update(Request $request, $id)
+    {
+      // dd($id);
+      $user = Auth::find($id);
+      $user->name = $request->name;
+      $user->email = $request->email;
+      $user->save();
+      return redirect('user/show');
+    }
+  
+    //削除
+    public function destroy(Request $request, $id)
+    {
+      // dd($id);
+      $this->authorize('destroy', $id);
+      $id->delete();
+      return redirect('user/show');
+    }
 }

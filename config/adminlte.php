@@ -225,6 +225,13 @@ return [
     */
 
     'menu' => [
+
+        [
+            'text' => 'ユーザー情報',
+            'url'  => 'users',
+            'icon' => 'far fa-address-book',
+        ],
+
         [
             'text' => '商品一覧',
             'url'  => 'items',

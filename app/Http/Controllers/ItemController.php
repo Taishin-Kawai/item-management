@@ -97,11 +97,11 @@ class ItemController extends Controller
   }
 
   //削除
-  public function destroy(Request $request, $id)
+  public function destroy(Request $request, Item $item,$id)
   {
     // dd($id);
-    $this->authorize('destroy', $id);
-    $id->delete();
+    $item = Item::find($id);
+    $item->delete();
     return redirect('/items');
   }
 }

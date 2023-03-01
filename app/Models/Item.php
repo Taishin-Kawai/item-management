@@ -38,15 +38,9 @@ class Item extends Model
                 $query->orWhere('id', 'like', '%' . $value . '%');
                 $query->orWhere('price', 'like', '%' . $value . '%');
                 $query->orWhere('type', 'like', '%' . $value . '%');
+                $query->orWhere('status', 'like', '%' . $value . '%');
 
             }
-
-            // $filter_types = $this->filter_types($search);
-            // if (!empty($filter_types)) {
-            //     foreach ($filter_types as $type) {
-            //         $query->orWhere('type', $type['value']);
-            //     }
-            // }
 
             // $filter_statuses = $this->filter_statuses($search);
             // if (!empty($filter_statuses)) {

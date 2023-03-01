@@ -24,34 +24,24 @@
         @csrf
         <div class="card-body">
           <div class="form-group">
-            <label for="name">名 前</label>
+            <label for="name">ユーザーネーム</label>
             <input type="text" class="form-control" id="name" name="name" value="{{ $user->name }}">
           </div>
 
           <div class="form-group">
-            <label for="name">価 格</label>
-            <input type="text" class="form-control" id="price" name="price" value="{{ $user->price }}">
+            <label for="tel">電話番号</label>
+            <input type="text" class="form-control" id="tel" name="tel" value="{{ $user->tel }}">
           </div>
 
           <div class="form-group">
-            <label for="status" id="status" name="status">状 態</label><br>
-            <select name="status" class="form-control">
-              <option value="新品" @if($user->status == '新品') selected @endif>新品</option>
-              <option value="中古品" @if($user->status == '中古品') selected @endif>中古品</option>
-              <option value="ジャンク品" @if($user->status == 'ジャンク品') selected @endif>ジャンク品</option>
-            </select>
+            <label for="email">メールアドレス</label>
+            <input type="text" class="form-control" id="email" name="email" value="{{ $user->email }}">
           </div>
 
           <div class="form-group">
-            <label for="type">個 数</label>
-            <input type="number" class="form-control" id="type" name="type" value="{{ $user->type }}">
+            <label for="address">住所</label>
+            <input type="text" class="form-control" id="address" name="address" value="{{ $user->address }}">
           </div>
-
-          <div class="form-group">
-            <label for="detail">詳 細</label>
-            <input type="text" class="form-control" id="detail" name="detail" value="{{ $user->detail }}">
-          </div>
-        </div>
 
         <div class="card-footer">
           <button type="submit" class="btn btn-default">更 新</button>

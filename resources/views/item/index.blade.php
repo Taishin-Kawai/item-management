@@ -7,6 +7,14 @@
 @stop
 
 @section('content')
+
+  <div>
+    <form class="mb-3 d-flex flex-row justify-content-end" method="get" action="{{ route('item.index') }}">
+      <input type="text" name="search" class="form-control col-3" placeholder="検索" aria-label="Recipient's username" aria-describedby="button-addon2">
+      <button class="btn btn-default col-1" type="submit">検索</button>
+    </form>
+  </div>
+
 <div class="row">
   <div class="col-12">
     <div class="card">
@@ -50,8 +58,24 @@
         </table>
       </div>
     </div>
+
+    <div class="row">
+  <div class="col-5">
+  </div>
+  <div class="col">
+    <div class="text-right">
+      {{ $items->links() }}
+    </div>
+  </div>
+  <div class="col">
   </div>
 </div>
+
+  </div>
+</div>
+
+
+
 @stop
 
 @section('css')

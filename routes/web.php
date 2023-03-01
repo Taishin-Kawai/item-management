@@ -25,11 +25,17 @@ Auth::routes();
 
 
 Route::get('/', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
-Route::get('/users', [App\Http\Controllers\HomeController::class, 'show'])->name('show');
-Route::get('/{id}/edit', [App\Http\Controllers\HomeController::class, 'edit'])->name('user.edit');
-Route::post('/{id}', [App\Http\Controllers\HomeController::class, 'update'])->name('user.update');
-Route::post('/{id}/destroy', [App\Http\Controllers\HomeController::class, 'destroy'])->name('user.destroy');
 
+Route::prefix('users')
+  ->middleware(['auth'])
+  ->name('user.')
+  ->group(function () {
+    Route::get('/', [App\Http\Controllers\HomeController::class, 'show'])->name('show');
+    Route::get('/{id}/edit', [App\Http\Controllers\HomeController::class, 'edit'])->name('edit');
+    Route::post('/{id}', [App\Http\Controllers\HomeController::class, 'update'])->name('update');
+    Route::post('/{id}/destroy', [App\Http\Controllers\HomeController::class, 'destroy'])->name('destroy');
+    Route::get('/confirm', [App\Http\Controllers\HomeController::class, 'confirm'])->name('confirm');
+  });
 
 Route::prefix('items')
   ->middleware(['auth'])

@@ -38,9 +38,9 @@
             <label for="status" id="status" name="status">状 態</label><br>
             <select name="status" class="form-control">
               <option value="">--選択してください--</option>
-              <option value="新品" {{ old('status') == "新品" ? 'selected' : ''}}>新品</option>
-              <option value="中古品" {{ old('status') == "中古品" ? 'selected' : ''}}>中古品</option>
-              <option value="ジャンク品" {{ old('status') == "ジャンク品" ? 'selected' : ''}}>ジャンク品</option>
+              <option value="1" {{ old('status') == "新品" ? 'selected' : ''}}>新品</option>
+              <option value="2" {{ old('status') == "中古品" ? 'selected' : ''}}>中古品</option>
+              <option value="3" {{ old('status') == "ジャンク品" ? 'selected' : ''}}>ジャンク品</option>
             </select>
           </div>
 

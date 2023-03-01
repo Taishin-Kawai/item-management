@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Pagination\Paginator;
 use App\Models\Item;
 
 class ItemController extends Controller
@@ -25,8 +26,15 @@ class ItemController extends Controller
   {
     // 商品一覧取得
     // $items = Item::select('id', 'user_id', 'name', 'price', 'status', 'type', 'detail','created_at','updated_at')->get();
-    $items = $request->user()->item()->get();
-    return view('item/index',['items' => $items], compact('items'));
+    $search_word = $request->search;
+    $user = Auth::user();
+    $query = Item::search($search_word);
+    $query = $query -> where('user_id', Auth::id());
+    return view('item/index',
+    [
+      'items' => $query->select('id','name','price','status','type','detail','updated_at')
+      ->paginate(10)], 
+      );
   }
 
   /**

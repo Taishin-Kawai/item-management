@@ -3,7 +3,7 @@
 @section('title', '商品詳細')
 
 @section('content_header')
-<h1>{{ Auth::user()->name }}さんのマイページ</h1>
+<h1>削除確認ページ</h1>
 @stop
 
 @section('content')
@@ -24,12 +24,12 @@
       <div class="card-body">
 
       <div class="form-group">
-          <label for="created_at">登録日</label>
+          <label for="name">登録日</label>
           <div class="form-control">{{ Auth::user()->created_at->format('Y/m/d') }}</div>
         </div>
 
         <div class="form-group">
-          <label for="id">ユーザーID</label>
+          <label for="name">ユーザーID</label>
           <div class="form-control">{{ Auth::user()->id }}</div>
         </div>
 
@@ -39,7 +39,7 @@
         </div>
 
         <div class="form-group">
-          <label for="gender">性別</label>
+          <label for="name">性別</label>
           <div class="form-control">{{ Auth::user()->gender }}</div>
         </div>
 
@@ -54,7 +54,7 @@
         </div>
 
         <div class="form-group">
-          <label for="email">メールアドレス</label>
+          <label for="name">メールアドレス</label>
           <div class="form-control">{{ Auth::user()->email }}</div>
         </div>
 
@@ -63,18 +63,10 @@
           <div class="form-control">{{ Auth::user()->address }}</div>
         </div>
 
-      <form method="post">
-        <div class="card-footer">
-          <a href="{{ route('user.edit', ['id' => $user->id ] ) }}" class="btn btn-outline-primary">登録情報編集</a>
-        </div>
-      </form>
-
-
-
-      <form method="post" >
+      <form id="delete_{{ Auth::user()->id }}" method="post" action="{{ route('user.destroy', ['id' => Auth::user()->id ] ) }}">
         @csrf
         <div class="card-footer">
-          <a href="{{ route('user.confirm', ['id' => $user->id ] ) }}" class="btn btn-outline-danger" >アカウント削除</a>
+          <a class="btn btn-outline-danger" data-id="{{ Auth::user()->id }}" onclick="deletePost(this)">アカウント削除</a>
         </div>
       </form>
 
@@ -82,6 +74,15 @@
   </div>
 </div>
 
+<!-- 削除時確認メッセージ -->
+<script>
+  function deletePost(e) {
+    'use strict'
+    if (confirm('本当に削除してもよろしいですか？')) {
+      document.getElementById('delete_' + e.dataset.id).submit()
+    }
+  }
+</script>
 @stop
 
 @section('css')

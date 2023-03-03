@@ -18,7 +18,7 @@ class ItemFactory extends Factory
             'name' => $this->faker->realText(10),
             'price' => $this->faker->numberBetween(100,100000),
             'status' => $this->faker->numberBetween(1,3),
-            'type' => $this->faker->numberBetween(1, 100),
+            'quantity' => $this->faker->numberBetween(1, 100),
             'detail' => $this->faker->realText(50)
         ];
     }

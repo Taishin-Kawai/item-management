@@ -50,7 +50,7 @@
               <td>{{ $item->name }}</td>
               <td>{{ $item->price }} 円</td>
               <td>{{ $item->status }}</td>
-              <td>{{ $item->type }}</td>
+              <td>{{ $item->quantity }}</td>
               <td><a href="{{ route('item.show', ['id' => $item->id ] ) }}" class="btn btn-default">商品詳細</a></td>
             </tr>
             @endforeach

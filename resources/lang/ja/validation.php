@@ -158,8 +158,8 @@ return [
         'name' => '名前',
         'price' => '価格',
         'status' => '状態',
-        'type' => '種別',
-        'detail' => '説明',
+        'quantity' => '個数',
+        'detail' => '詳細',
 
         //user
         'password' => 'パスワード',

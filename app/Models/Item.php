@@ -18,7 +18,7 @@ class Item extends Model
         'name',
         'price',
         'status',
-        'type',
+        'quantity',
         'detail',
     ];
 
@@ -37,7 +37,7 @@ class Item extends Model
                 $query->orWhere('detail', 'like', '%' . $value . '%');
                 $query->orWhere('id', 'like', '%' . $value . '%');
                 $query->orWhere('price', 'like', '%' . $value . '%');
-                $query->orWhere('type', 'like', '%' . $value . '%');
+                $query->orWhere('quantity', 'like', '%' . $value . '%');
                 $query->orWhere('status', 'like', '%' . $value . '%');
 
             }

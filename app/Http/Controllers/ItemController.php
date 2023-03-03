@@ -25,14 +25,14 @@ class ItemController extends Controller
   public function index(Request $request)
   {
     // 商品一覧取得
-    // $items = Item::select('id', 'user_id', 'name', 'price', 'status', 'type', 'detail','created_at','updated_at')->get();
+    // $items = Item::select('id', 'user_id', 'name', 'price', 'status', 'quantity', 'detail','created_at','updated_at')->get();
     $search_word = $request->search;
     $user = Auth::user();
     $query = Item::search($search_word);
     $query = $query -> where('user_id', Auth::id());
     return view('item/index',
     [
-      'items' => $query->select('id','name','price','status','type','detail','updated_at')
+      'items' => $query->select('id','name','price','status','quantity','detail','updated_at')
       ->paginate(10)], 
       );
   }
@@ -49,7 +49,7 @@ class ItemController extends Controller
         'name' => 'required|max:100',
         'price' => 'required|max:100000',
         'status' => 'required',
-        'type' => 'required',
+        'quantity' => 'required',
         'detail' => 'required|max:100',
       ]);
 
@@ -59,14 +59,14 @@ class ItemController extends Controller
       //   'name' => $request->name,
       //   'price' => $request->price,
       //   'status' => $request->status,
-      //   'type' => $request->type,
+      //   'quantity' => $request->quantity,
       //   'detail' => $request->detail,
       // ]);
       $request->user()->item()->create([
         'name' => $request->name,
         'price' => $request->price,
         'status' => $request->status,
-        'type' => $request->type,
+        'quantity' => $request->quantity,
         'detail' => $request->detail,
       ]);
       return redirect('/items');
@@ -98,7 +98,7 @@ class ItemController extends Controller
     $item->name = $request->name;
     $item->price = $request->price;
     $item->status = $request->status;
-    $item->type = $request->type;
+    $item->quantity = $request->quantity;
     $item->detail = $request->detail;
     $item->save();
     return redirect('/items');

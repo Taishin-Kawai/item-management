@@ -45,8 +45,8 @@
           </div>
 
           <div class="form-group">
-            <label for="type">個 数</label>
-            <input type="number" class="form-control" id="type" name="type" value="{{ old('type') }}" placeholder="1, 2, 3, ...">
+            <label for="quantity">個 数</label>
+            <input type="number" class="form-control" id="quantity" name="quantity" value="{{ old('quantity') }}" placeholder="1, 2, 3, ...">
           </div>
 
           <div class="form-group">

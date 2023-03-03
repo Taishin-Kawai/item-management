@@ -43,8 +43,8 @@
           </div>
 
           <div class="form-group">
-            <label for="type">個 数</label>
-            <input type="number" class="form-control" id="type" name="type" value="{{ $item->type }}">
+            <label for="quantity">個 数</label>
+            <input type="number" class="form-control" id="quantity" name="quantity" value="{{ $item->quantity }}">
           </div>
 
           <div class="form-group">

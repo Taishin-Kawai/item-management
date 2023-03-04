@@ -25,7 +25,6 @@ class ItemController extends Controller
   public function index(Request $request)
   {
     // 商品一覧取得
-    // $items = Item::select('id', 'user_id', 'name', 'price', 'status', 'quantity', 'detail','created_at','updated_at')->get();
     $search_word = $request->search;
     $user = Auth::user();
     $query = Item::search($search_word);
@@ -33,7 +32,9 @@ class ItemController extends Controller
     return view('item/index',
     [
       'items' => $query->select('id','name','price','status','quantity','detail','updated_at')
-      ->paginate(10)], 
+      ->paginate(10), 
+      'statuses' => Item::STATUSES,
+    ]
       );
   }
 
@@ -53,16 +54,7 @@ class ItemController extends Controller
         'detail' => 'required|max:100',
       ]);
 
-      // 商品登録
-      // Item::create([
-      //   'user_id' => Auth::user()->id,
-      //   'name' => $request->name,
-      //   'price' => $request->price,
-      //   'status' => $request->status,
-      //   'quantity' => $request->quantity,
-      //   'detail' => $request->detail,
-      // ]);
-      $request->user()->item()->create([
+      $request->user()->items()->create([
         'name' => $request->name,
         'price' => $request->price,
         'status' => $request->status,
@@ -107,7 +99,6 @@ class ItemController extends Controller
   //削除
   public function destroy(Request $request, Item $item,$id)
   {
-    // dd($id);
     $item = Item::find($id);
     $item->delete();
     return redirect('/items');

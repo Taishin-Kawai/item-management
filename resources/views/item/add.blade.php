@@ -23,24 +23,23 @@
       <form action="{{ route('item.add')}}" method="POST">
         @csrf
         <div class="card-body">
-          
+
           <div class="form-group">
             <label for="name">名 前</label>
             <input type="text" class="form-control" id="name" name="name" value="{{ old('name') }}" placeholder="商品名">
           </div>
 
           <div class="form-group">
-            <label for="name">価 格</label>
+            <label for="price">価 格</label>
             <input type="text" class="form-control" id="price" name="price" value="{{ old('price') }}" placeholder="100円〜100000円">
           </div>
 
           <div class="form-group">
-            <label for="status" id="status" name="status">状 態</label><br>
-            <select name="status" class="form-control">
-              <option value="">--選択してください--</option>
-              <option value="1" {{ old('status') == "新品" ? 'selected' : ''}}>新品</option>
-              <option value="2" {{ old('status') == "中古品" ? 'selected' : ''}}>中古品</option>
-              <option value="3" {{ old('status') == "ジャンク品" ? 'selected' : ''}}>ジャンク品</option>
+          <label for="status">状 態</label>
+            <select name="status" class="form-control" aria-label="Default select example">
+              @foreach(\App\Models\Item::STATUSES as $status)
+              <option value="{{$status['value']}}">{{$status['label']}}</option>
+              @endforeach
             </select>
           </div>
 

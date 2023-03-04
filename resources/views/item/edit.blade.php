@@ -34,11 +34,10 @@
           </div>
 
           <div class="form-group">
-            <label for="status" id="status" name="status">状 態</label><br>
-            <select name="status" class="form-control">
-              <option value="新品" @if($item->status == '新品') selected @endif>新品</option>
-              <option value="中古品" @if($item->status == '中古品') selected @endif>中古品</option>
-              <option value="ジャンク品" @if($item->status == 'ジャンク品') selected @endif>ジャンク品</option>
+            <select name="status" class="form-control" aria-label="Default select example">
+              @foreach(\App\Models\Item::STATUSES as $status)
+              <option value="{{$status['value']}}" @if($status['value']==$item->status) selected @endif>{{$status['label']}}</option>
+              @endforeach
             </select>
           </div>
 

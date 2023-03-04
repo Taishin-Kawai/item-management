@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Support\Facades\Auth;
 use App\Models\User;
+use App\Models\Item;
 use Illuminate\Http\Request;
 
 class HomeController extends Controller
@@ -58,6 +59,8 @@ class HomeController extends Controller
   // 削除機能
   public function destroy(Request $request, User $user,$id)
   {
+
+    Item::where('user_id',$id)->delete();
     $user = User::find($id);
     $user->forceDelete();
     return redirect()->route('home');

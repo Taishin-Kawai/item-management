@@ -49,7 +49,7 @@
               <td>{{ $item['updated_at']->format('Y/m/d') }}</td>
               <td>{{ $item->name }}</td>
               <td>{{ $item->price }} 円</td>
-              <td>{{ $item->status }}</td>
+              <td>{{$statuses[$item->status]['label']}}</td>
               <td>{{ $item->quantity }}</td>
               <td><a href="{{ route('item.show', ['id' => $item->id ] ) }}" class="btn btn-default">商品詳細</a></td>
             </tr>

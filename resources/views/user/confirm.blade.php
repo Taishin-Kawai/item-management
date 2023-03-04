@@ -63,7 +63,7 @@
           <div class="form-control">{{ Auth::user()->address }}</div>
         </div>
 
-      <form id="delete_{{ Auth::user()->id }}" method="post" action="{{ route('user.destroy', ['id' => Auth::user()->id ] ) }}">
+      <form id="delete_{{ Auth::user()->id }}" method="post" action="{{ route('user.destroy', $user->id ) }}">
         @csrf
         <div class="card-footer">
           <a class="btn btn-outline-danger" data-id="{{ Auth::user()->id }}" onclick="deletePost(this)">アカウント削除</a>

@@ -55,18 +55,18 @@ class HomeController extends Controller
     return redirect('/');
   }
 
-  //削除
-  public function destroy(Request $request, $id)
+  // 削除機能
+  public function destroy(Request $request, User $user,$id)
   {
-    // dd($id);
     $user = User::find($id);
-    $user->delete();
-    return redirect('/');
+    $user->forceDelete();
+    return redirect()->route('home');
   }
 
-  //削除
+  //削除画面
   public function confirm()
   {
-    return view('user/confirm');
+    $user = auth()->user();
+    return view('user/confirm',['user'=>$user]);
   }
 }

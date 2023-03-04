@@ -71,7 +71,7 @@
 
 
 
-      <form method="post" >
+      <form method="post">
         @csrf
         <div class="card-footer">
           <a href="{{ route('user.confirm', ['id' => $user->id ] ) }}" class="btn btn-outline-danger" >アカウント削除</a>

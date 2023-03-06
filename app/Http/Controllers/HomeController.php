@@ -33,7 +33,12 @@ class HomeController extends Controller
   public function show()
   {
     $user = Auth::user();
-    return view('user/show', compact('user'));
+    if($user->gender === 0){
+      $gender = '男性';
+    } else {
+      $gender = '女性';
+    }
+    return view('user/show', compact('user','gender'));
   }
 
   //編集画面

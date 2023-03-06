@@ -69,9 +69,16 @@ class ItemController extends Controller
   //id取得、表示、確認画面
   public function show($id)
   {
-    // dd($id);
     $item = Item::find($id);
-    return view('item/show', compact('item'));
+    if($item->status == 1){
+      $status = '新品';
+    } elseif($item->status == 2) {
+      $status = '中古品';
+    } else {
+      $status = 'ジャンク品';
+    }
+
+    return view('item/show', compact('item','status'));
   }
 
   //編集画面

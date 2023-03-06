@@ -40,7 +40,7 @@
 
         <div class="form-group">
           <label for="status" id="status" name="status">状 態</label><br>
-          <div class="form-control">{{ $item->status }}</div>
+          <div class="form-control">{{ $status }}</div>
 
         </div>
 
@@ -51,7 +51,7 @@
 
         <div class="form-group">
           <label for="detail">詳 細</label>
-          <div class="form-control">{{ $item->detail }}</div>
+          <div class="form-control h-auto">{{ $item->detail }}</div>
         </div>
       </div>
 

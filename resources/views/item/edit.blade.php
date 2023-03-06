@@ -29,11 +29,12 @@
           </div>
 
           <div class="form-group">
-            <label for="name">価 格</label>
+            <label for="price">価 格</label>
             <input type="text" class="form-control" id="price" name="price" value="{{ $item->price }}">
           </div>
 
           <div class="form-group">
+          <label for="status">状 態</label>
             <select name="status" class="form-control" aria-label="Default select example">
               @foreach(\App\Models\Item::STATUSES as $status)
               <option value="{{$status['value']}}" @if($status['value']==$item->status) selected @endif>{{$status['label']}}</option>

@@ -75,6 +75,11 @@ class HomeController extends Controller
   public function confirm()
   {
     $user = auth()->user();
-    return view('user/confirm',['user'=>$user]);
+    if($user->gender === 0){
+      $gender = '男性';
+    } else {
+      $gender = '女性';
+    }
+    return view('user/confirm',['user'=>$user],compact('user','gender'));
   }
 }

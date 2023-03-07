@@ -40,7 +40,7 @@
 
         <div class="form-group">
           <label for="name">性別</label>
-          <div class="form-control">{{ Auth::user()->gender }}</div>
+          <div class="form-control">{{ $gender }}</div>
         </div>
 
         <div class="form-group">

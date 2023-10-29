@@ -25,4 +25,4 @@ https://drive.google.com/drive/folders/1J-UdzdIGLzrUoXGWU7O8gyCRxPBgMJ6k
 https://item-management-kt.herokuapp.com/login
 ## テストアカウント情報
 メールアドレス：test@test.jp
-パスワード：testtest
+パスワード：testtest 
